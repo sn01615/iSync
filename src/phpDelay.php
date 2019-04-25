@@ -1,9 +1,8 @@
 <?php
+
 namespace PhpUtils;
 
 /**
- *
- * @author YangLong
  * Date: 2017-11-13 14:36
  */
 class phpDelay
@@ -14,9 +13,10 @@ class phpDelay
     /**
      * @return static
      */
-    final static public function getInstance() {
+    final static public function getInstance()
+    {
         $name = get_called_class();
-        if (! isset(self::$instances[$name])) {
+        if (!isset(self::$instances[$name])) {
             self::$instances[$name] = new static();
         }
         return self::$instances[$name];
@@ -24,11 +24,13 @@ class phpDelay
 
     private $tasks = [];
 
-    public function push(callable $closures) {
+    public function push(callable $closures)
+    {
         $this->tasks[] = $closures;
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         foreach ($this->tasks as $task) {
             $task();
         }
