@@ -9,6 +9,7 @@ class phpDelay
 {
 
     private static $instances = [];
+    private $tasks = [];
 
     /**
      * @return static
@@ -21,8 +22,6 @@ class phpDelay
         }
         return self::$instances[$name];
     }
-
-    private $tasks = [];
 
     public function push(callable $closures)
     {
